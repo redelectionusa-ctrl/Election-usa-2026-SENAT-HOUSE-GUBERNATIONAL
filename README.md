@@ -42,6 +42,7 @@
     .badge-tossup { background: rgba(255,200,0,0.2); color: #ffc107; border: 1px solid #ffc107; }
     .badge-lean-r { background: rgba(229,57,53,0.2); color: #ff9e8f; border: 1px solid #e53935; }
     .badge-lean-d { background: rgba(30,136,229,0.2); color: #8fc1ff; border: 1px solid #1e88e5; }
+    .badge-likely-r { background: rgba(229,57,53,0.3); color: #ff6b5e; border: 1px solid #d32f2f; }
 
     /* PANNEAU DE DÉTAILS */
     .detail-panel { display: none; }
@@ -50,36 +51,59 @@
     .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; border-bottom: 2px solid rgba(255,255,255,0.15); padding-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
     .card-title { font-size: 1.6rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #f0e6d2; }
     .candidate-row { margin-bottom: 1.8rem; }
-    .candidate-label { display: flex; justify-content: space-between; margin-bottom: 0.7rem; }
+    .candidate-label { display: flex; justify-content: space-between; margin-bottom: 0.7rem; flex-wrap: wrap; gap: 0.5rem; }
     .party-name { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
     .party-percent { font-size: 1.8rem; font-weight: 800; }
     .rep { color: #ff9e8f; } .dem { color: #8fc1ff; }
     .bar-wrapper { width: 100%; height: 40px; background: #121212e0; border: 1px solid rgba(255,255,255,0.12); overflow: hidden; }
-    .bar-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 20px; font-weight: 700; color: white; }
+    .bar-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 20px; font-weight: 700; color: white; font-size: 1rem; }
     .bar-fill.rep-fill { background: linear-gradient(90deg, #a51c1c, #d32f2f); }
     .bar-fill.dem-fill { background: linear-gradient(90deg, #0a3a7a, #1976d2); }
-    .poll-footer { margin-top: 1.5rem; display: flex; justify-content: space-between; color: rgba(255,240,220,0.7); border-top: 1px solid rgba(255,255,240,0.1); padding-top: 1.2rem; }
+    .poll-footer { margin-top: 1.5rem; display: flex; justify-content: space-between; color: rgba(255,240,220,0.7); border-top: 1px solid rgba(255,255,240,0.1); padding-top: 1.2rem; flex-wrap: wrap; gap: 0.5rem; font-size: 0.85rem; }
 
     /* PROJECTIONS */
     .projections-bar { display: flex; height: 12px; margin: 1rem 0; background: #121212; }
     .proj-r-safe { background: #5a0000; } .proj-r-likely { background: #8b0000; } .proj-r-lean { background: #b71c1c; }
     .proj-tossup { background: #6b5a00; } .proj-d-lean { background: #1565c0; } .proj-d-likely { background: #0d47a1; }
-    .projections-legend { display: flex; justify-content: space-between; font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+    .projections-legend { display: flex; justify-content: space-between; font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-bottom: 1rem; flex-wrap: wrap; }
     .seats-projection { text-align: center; color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 1rem 0; }
 
-    /* PRIMAIRES */
+    /* PRIMAIRES AMÉLIORÉES */
+    .primary-section { margin-top: 1rem; }
+    .primary-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .primary-date { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
     .primary-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
-    .prim-tab { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 0.7rem 1.2rem; font-size: 1rem; font-weight: 600; text-transform: uppercase; cursor: pointer; flex: 1; text-align: center; }
+    .prim-tab { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 0.7rem 1.2rem; font-size: 1rem; font-weight: 600; text-transform: uppercase; cursor: pointer; flex: 1; text-align: center; transition: all 0.2s; }
+    .prim-tab:hover { background: rgba(255,255,255,0.08); }
     .prim-tab.active { background: rgba(255,255,255,0.15); border-color: rgba(255,215,150,0.6); }
+    .prim-tab.r-active { background: rgba(229,57,53,0.2); border-color: #e53935; }
+    .prim-tab.d-active { background: rgba(30,136,229,0.2); border-color: #1e88e5; }
     .prim-panel { display: none; }
     .prim-panel.active { display: block; }
-    .primary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-    .candidate-card { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; text-align: center; }
-    .cand-photo { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 0.6rem; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; color: white; border: 2px solid rgba(255,255,255,0.2); }
+
+    .primary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .candidate-card { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; text-align: center; }
+    .candidate-card.winner { border-color: rgba(255,215,150,0.4); box-shadow: 0 0 20px rgba(255,215,150,0.1); }
+    .cand-photo { width: 65px; height: 65px; border-radius: 50%; margin: 0 auto 0.8rem; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.6rem; color: white; border: 2px solid rgba(255,255,255,0.2); }
     .cand-photo.r { background: #a51c1c; } .cand-photo.d { background: #0a3a7a; }
-    .cand-name { font-size: 1rem; font-weight: 700; color: white; }
-    .cand-desc { font-size: 0.7rem; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
-    .cand-score { font-size: 1.8rem; font-weight: 800; } .cand-score.r { color: #ff9e8f; } .cand-score.d { color: #8fc1ff; }
+    .cand-photo.winner-photo { border-color: rgba(255,215,150,0.8); box-shadow: 0 0 15px rgba(255,215,150,0.3); }
+    .cand-name { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.3rem; }
+    .cand-desc { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-bottom: 0.6rem; line-height: 1.3; }
+    .cand-score { font-size: 2rem; font-weight: 800; margin-bottom: 0.3rem; } .cand-score.r { color: #ff9e8f; } .cand-score.d { color: #8fc1ff; }
+    .cand-badge { display: inline-block; padding: 3px 10px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .badge-winner { background: rgba(255,215,0,0.2); color: #ffd700; border: 1px solid #ffd700; }
+    .badge-runoff { background: rgba(255,152,0,0.2); color: #ff9800; border: 1px solid #ff9800; }
+    .badge-eliminated { background: rgba(158,158,158,0.2); color: #9e9e9e; border: 1px solid #9e9e9e; }
+    .badge-qualified { background: rgba(76,175,80,0.2); color: #4caf50; border: 1px solid #4caf50; }
+
+    /* TABLEAUX PRIMAIRES */
+    .primary-table { width: 100%; border-collapse: collapse; color: white; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .primary-table th { text-align: center; padding: 10px 8px; background: rgba(0,0,0,0.4); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.75rem; border-bottom: 2px solid rgba(255,255,255,0.15); }
+    .primary-table td { text-align: center; padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .primary-table .winner-col { font-weight: 700; }
+    .primary-table .r-col { color: #ff9e8f; } .primary-table .d-col { color: #8fc1ff; }
+    .primary-table .highlight-row { background: rgba(0,0,0,0.3); font-weight: 600; }
+    .primary-note { color: rgba(255,255,255,0.5); font-size: 0.8rem; text-align: center; margin-top: 1rem; font-style: italic; }
 
     /* GRAPHIQUE */
     .chart-container { position: relative; width: 100%; height: 280px; margin: 1rem 0; }
@@ -88,7 +112,13 @@
     .chart-legend { display: flex; justify-content: center; gap: 1.5rem; margin-top: 0.5rem; color: rgba(255,255,255,0.7); flex-wrap: wrap; font-size: 0.85rem; }
     .legend-dot { width: 10px; height: 10px; display: inline-block; margin-right: 5px; } .legend-dot.r { background: #e53935; } .legend-dot.d { background: #1e88e5; }
 
-    @media (max-width: 750px) { .main-header { padding: 1rem; } .card-title { font-size: 1.3rem; } }
+    .no-data { text-align: center; color: rgba(255,255,255,0.4); padding: 3rem; font-style: italic; }
+
+    @media (max-width: 750px) { 
+      .main-header { padding: 1rem; } 
+      .card-title { font-size: 1.3rem; } 
+      .primary-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -102,13 +132,13 @@
 
   <!-- ONGLETS CATÉGORIE -->
   <div class="category-tabs">
-    <div class="cat-tab active" data-cat="house">🏛️ House</div>
-    <div class="cat-tab" data-cat="senate">🗳️ Senate</div>
+    <div class="cat-tab" data-cat="house">🏛️ House</div>
+    <div class="cat-tab active" data-cat="senate">🗳️ Senate</div>
     <div class="cat-tab" data-cat="governor">🏢 Gubernatorial</div>
   </div>
 
   <!-- ==================== HOUSE ==================== -->
-  <div class="cat-panel active" id="cat-house">
+  <div class="cat-panel" id="cat-house">
     <div class="race-list" id="house-races">
       <div class="race-item" data-race="house-wa3">
         <div class="race-info"><h3>Washington · 3e District</h3><p>Leslie Lewallen (R) vs Marie Gluesenkamp Perez (D) *</p></div>
@@ -118,9 +148,9 @@
   </div>
 
   <!-- ==================== SENATE ==================== -->
-  <div class="cat-panel" id="cat-senate">
+  <div class="cat-panel active" id="cat-senate">
     <div class="race-list" id="senate-races">
-      <div class="race-item" data-race="senate-tx">
+      <div class="race-item active" data-race="senate-tx">
         <div class="race-info"><h3>Texas · Sénat</h3><p>John Cornyn (R) * vs James Talarico (D)</p></div>
         <div class="race-rating-badge badge-lean-r">Lean R</div>
       </div>
@@ -137,26 +167,28 @@
   </div>
 
   <!-- ==================== PANNEAUX DE DÉTAILS ==================== -->
-  <div id="detail-container">
-    <!-- Les détails s'afficheront ici dynamiquement -->
-  </div>
+  <div id="detail-container"></div>
 
 </div>
 
 <script>
   (function() {
-    // Données des courses
+    // Données des courses (enrichies)
     const racesData = {
       'senate-tx': {
         title: 'Sénat · Texas',
         rating: 'Lean R',
         ratingClass: 'badge-lean-r',
+        state: 'Texas',
         candidates: [
-          { name: 'John Cornyn', party: 'R', initials: 'JC', percent: 48, desc: 'Sénateur sortant' },
-          { name: 'James Talarico', party: 'D', initials: 'JT', percent: 46, desc: 'Représentant d\'État' }
+          { name: 'John Cornyn', party: 'R', initials: 'JC', percent: 48, desc: 'Sénateur sortant · Élu depuis 2002' },
+          { name: 'James Talarico', party: 'D', initials: 'JT', percent: 46, desc: 'Représentant d\'État · Ancien enseignant' }
         ],
         projections: { rSafe: 20, rLikely: 25, rLean: 15, tossup: 20, dLean: 12, dLikely: 8 },
-        seatsInfo: 'Sièges projetés : 51 R - 47 D · Marge : +2R à +8R',
+        seatsInfo: 'Sièges projetés : 51 R - 47 D · Fourchette : +2R à +8R',
+        marginError: '±3.2%',
+        sample: '2 814 LV',
+        pollDates: '12-15 Sep 2026',
         polls: [
           { date: 'Jan', rep: 47, dem: 44 }, { date: 'Fév', rep: 44, dem: 43 },
           { date: 'Mar', rep: 44, dem: 43 }, { date: 'Avr', rep: 45, dem: 44 },
@@ -164,28 +196,52 @@
           { date: 'Jul', rep: 44, dem: 44 }, { date: 'Aoû', rep: 47, dem: 45 },
           { date: 'Sep', rep: 48, dem: 46 }
         ],
+        primaryDate: '4 mars 2026',
         primaries: {
-          rep: [
-            { name: 'John Cornyn', initials: 'JC', desc: 'Sénateur sortant', score: '40%', class: 'r', badge: '▼ Second tour' },
-            { name: 'Ken Paxton', initials: 'KP', desc: 'Procureur général', score: '48.8%', class: 'r', badge: '▲ Second tour' }
-          ],
-          dem: [
-            { name: 'James Talarico', initials: 'JT', desc: 'Représentant d\'État', score: '53.1%', class: 'd', badge: '🏆 Vainqueur' },
-            { name: 'Jasmine Crockett', initials: 'JC', desc: 'Représentante (TX-30)', score: '45.6%', class: 'd', badge: 'Battue' }
-          ]
-        },
-        primaryNote: { rep: 'Second tour républicain : 26 mai 2026', dem: 'James Talarico est le candidat démocrate pour novembre 2026' }
+          rep: {
+            title: 'Primaire Républicaine',
+            note: 'Second tour républicain prévu le 26 mai 2026 entre John Cornyn et Ken Paxton. Le vainqueur affrontera James Talarico (D) en novembre.',
+            candidates: [
+              { name: 'Ken Paxton', initials: 'KP', desc: 'Procureur général du Texas · Soutenu par Trump', score: '48.8%', class: 'r', badge: 'badge-runoff', badgeText: 'Second tour', isWinner: true },
+              { name: 'John Cornyn', initials: 'JC', desc: 'Sénateur sortant · Élu depuis 2002', score: '41.3%', class: 'r', badge: 'badge-runoff', badgeText: 'Second tour', isWinner: true },
+              { name: 'Wesley Hunt', initials: 'WH', desc: 'Représentant (TX-38) · Vétéran', score: '~10%', class: 'r', badge: 'badge-eliminated', badgeText: 'Éliminé', isWinner: false }
+            ],
+            polls: [
+              { institute: 'Quantus Insights', date: 'Mar 2026', values: ['48.8%', '41.3%', '~10%'] },
+              { institute: 'Emerson College', date: 'Fév 2026', values: ['46%', '42%', '12%'] },
+              { institute: 'YouGov/Texas', date: 'Jan 2026', values: ['44%', '43%', '13%'] }
+            ]
+          },
+          dem: {
+            title: 'Primaire Démocrate',
+            note: 'James Talarico a remporté l\'investiture démocrate avec 53.1% des voix. Il affrontera le vainqueur de la primaire républicaine en novembre 2026.',
+            candidates: [
+              { name: 'James Talarico', initials: 'JT', desc: 'Représentant d\'État · Ancien enseignant', score: '53.1%', class: 'd', badge: 'badge-winner', badgeText: '🏆 Vainqueur', isWinner: true },
+              { name: 'Jasmine Crockett', initials: 'JC', desc: 'Représentante (TX-30) · Ancienne avocate', score: '45.6%', class: 'd', badge: 'badge-eliminated', badgeText: 'Battue', isWinner: false },
+              { name: 'Ahmad Hassan', initials: 'AH', desc: 'Avocat · Militant communautaire', score: '1.3%', class: 'd', badge: 'badge-eliminated', badgeText: 'Battu', isWinner: false }
+            ],
+            polls: [
+              { institute: 'Résultat final', date: '4 Mar 2026', values: ['53.1%', '45.6%', '1.3%'] },
+              { institute: 'Emerson College', date: 'Fév 2026', values: ['52%', '47%', '1%'] },
+              { institute: 'YouGov/Texas', date: 'Jan 2026', values: ['50%', '46%', '4%'] }
+            ]
+          }
+        }
       },
       'house-wa3': {
         title: 'House · Washington 3rd District',
         rating: 'Tossup',
         ratingClass: 'badge-tossup',
+        state: 'Washington',
         candidates: [
-          { name: 'Leslie Lewallen', party: 'R', initials: 'LL', percent: 48, desc: 'Ancienne procureure' },
-          { name: 'Marie G. Perez', party: 'D', initials: 'MP', percent: 46, desc: 'Représentante sortante' }
+          { name: 'Leslie Lewallen', party: 'R', initials: 'LL', percent: 48, desc: 'Ancienne procureure · Soutenue par NRCC' },
+          { name: 'Marie Gluesenkamp Perez', party: 'D', initials: 'MP', percent: 46, desc: 'Représentante sortante · Élue en 2022' }
         ],
         projections: { rSafe: 10, rLikely: 15, rLean: 18, tossup: 30, dLean: 17, dLikely: 10 },
-        seatsInfo: 'Sièges projetés : 218 R - 217 D · Marge : +5D à +15R',
+        seatsInfo: 'Sièges projetés : 218 R - 217 D · Fourchette : +5D à +15R',
+        marginError: '±3.5%',
+        sample: '1 100 LV',
+        pollDates: '12-15 Sep 2026',
         polls: [
           { date: 'Jan', rep: 47, dem: 45 }, { date: 'Fév', rep: 46, dem: 44 },
           { date: 'Mar', rep: 45, dem: 46 }, { date: 'Avr', rep: 44, dem: 47 },
@@ -193,20 +249,36 @@
           { date: 'Jul', rep: 45, dem: 47 }, { date: 'Aoû', rep: 48, dem: 45 },
           { date: 'Sep', rep: 48, dem: 46 }
         ],
+        primaryDate: '5 août 2025',
         primaries: {
-          rep: [
-            { name: 'Leslie Lewallen', initials: 'LL', desc: 'Ancienne procureure', score: '52%', class: 'r', badge: '🏆 Qualifiée' },
-            { name: 'Joe Kent', initials: 'JK', desc: 'Ancien militaire', score: '48%', class: 'r', badge: 'Battu' }
-          ],
-          dem: [
-            { name: 'Marie G. Perez', initials: 'MP', desc: 'Représentante sortante', score: '46%', class: 'd', badge: '🏆 Qualifiée' }
-          ]
-        },
-        primaryNote: { rep: 'Washington utilise un système de primaire unique ("Top 2")', dem: 'Perez est la seule démocrate qualifiée pour l\'élection générale' }
+          rep: {
+            title: 'Primaire Républicaine (Top 2)',
+            note: 'Washington utilise un système de primaire unique ("Top 2"). Les deux candidats ayant reçu le plus de voix, tous partis confondus, s\'affrontent en novembre. Leslie Lewallen est arrivée en tête avec 52%.',
+            candidates: [
+              { name: 'Leslie Lewallen', initials: 'LL', desc: 'Ancienne procureure · Soutenue par NRCC', score: '52%', class: 'r', badge: 'badge-qualified', badgeText: 'Qualifiée', isWinner: true },
+              { name: 'Joe Kent', initials: 'JK', desc: 'Ancien militaire · Candidat en 2022', score: '48%', class: 'r', badge: 'badge-eliminated', badgeText: 'Battu', isWinner: false }
+            ],
+            polls: [
+              { institute: 'Résultat primaire', date: '5 Aoû 2025', values: ['52%', '48%'] },
+              { institute: 'SurveyUSA', date: 'Juil 2025', values: ['50%', '46%'] },
+              { institute: 'Public Policy', date: 'Jun 2025', values: ['48%', '47%'] }
+            ]
+          },
+          dem: {
+            title: 'Primaire Démocrate (Top 2)',
+            note: 'Marie Gluesenkamp Perez s\'est qualifiée pour l\'élection générale avec 46% des voix. Elle est la seule démocrate à avoir franchi le seuil des 5%.',
+            candidates: [
+              { name: 'Marie Gluesenkamp Perez', initials: 'MP', desc: 'Représentante sortante · Élue en 2022', score: '46%', class: 'd', badge: 'badge-qualified', badgeText: 'Qualifiée', isWinner: true }
+            ],
+            polls: [
+              { institute: 'Résultat primaire', date: '5 Aoû 2025', values: ['46%'] },
+              { institute: 'SurveyUSA', date: 'Juil 2025', values: ['48%'] },
+              { institute: 'Public Policy', date: 'Jun 2025', values: ['50%'] }
+            ]
+          }
+        }
       }
     };
-
-    let activeRace = null;
 
     // Gestion des onglets de catégorie
     document.querySelectorAll('.cat-tab').forEach(tab => {
@@ -214,47 +286,52 @@
         document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
         this.classList.add('active');
         document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
-        document.getElementById('cat-' + this.dataset.cat).classList.add('active');
-        // Cacher les détails quand on change de catégorie
-        document.getElementById('detail-container').innerHTML = '';
-        document.querySelectorAll('.race-item').forEach(i => i.classList.remove('active'));
+        const catId = 'cat-' + this.dataset.cat;
+        document.getElementById(catId).classList.add('active');
+        
+        // Activer la première course de la catégorie
+        const firstRace = document.querySelector('#' + catId + ' .race-item[data-race]');
+        if (firstRace) {
+          document.querySelectorAll('.race-item').forEach(i => i.classList.remove('active'));
+          firstRace.classList.add('active');
+          showRaceDetail(firstRace.dataset.race);
+        } else {
+          document.getElementById('detail-container').innerHTML = '<div class="no-data">Sélectionnez une course pour voir les détails</div>';
+        }
       });
     });
 
     // Gestion du clic sur une course
     document.querySelectorAll('.race-item[data-race]').forEach(item => {
       item.addEventListener('click', function() {
-        const raceId = this.dataset.race;
         document.querySelectorAll('.race-item').forEach(i => i.classList.remove('active'));
         this.classList.add('active');
-        showRaceDetail(raceId);
+        showRaceDetail(this.dataset.race);
       });
     });
 
     function showRaceDetail(raceId) {
       const data = racesData[raceId];
       if (!data) return;
-      activeRace = raceId;
       
       const container = document.getElementById('detail-container');
       const lastP = data.polls[data.polls.length-1];
-      const avgRep = calcAvg(data.polls.map(p => p.rep));
-      const avgDem = calcAvg(data.polls.map(p => p.dem));
       
       container.innerHTML = `
+        <!-- CARTE ÉLECTION GÉNÉRALE -->
         <div class="card">
           <div class="card-header">
             <div class="card-title">${data.title}</div>
             <div class="race-rating-badge ${data.ratingClass}">${data.rating}</div>
           </div>
           
-          <!-- Barres candidats -->
           ${data.candidates.map(c => `
             <div class="candidate-row">
               <div class="candidate-label">
-                <span class="party-name ${c.party==='R'?'rep':'dem'}">${c.name} (${c.party}) ${c.desc ? '· '+c.desc : ''}</span>
+                <span class="party-name ${c.party==='R'?'rep':'dem'}">${c.name} (${c.party})</span>
                 <span class="party-percent ${c.party==='R'?'rep':'dem'}">${c.percent}%</span>
               </div>
+              <div style="color:rgba(255,255,255,0.45); font-size:0.8rem; margin-bottom:0.4rem;">${c.desc}</div>
               <div class="bar-wrapper">
                 <div class="bar-fill ${c.party==='R'?'rep-fill':'dem-fill'}" style="width:${c.percent}%">${c.percent}%</div>
               </div>
@@ -262,70 +339,128 @@
           `).join('')}
           
           <div class="poll-footer">
-            <span>Marge d'erreur ±3.5%</span>
-            <span>1 100 LV · 12-15 Sep 2026</span>
+            <span>📊 Marge d'erreur ${data.marginError}</span>
+            <span>👥 ${data.sample} · ${data.pollDates}</span>
           </div>
           
           <!-- Projections -->
-          <div class="projections-bar">
-            <div class="proj-r-safe" style="width:${data.projections.rSafe}%"></div>
-            <div class="proj-r-likely" style="width:${data.projections.rLikely}%"></div>
-            <div class="proj-r-lean" style="width:${data.projections.rLean}%"></div>
-            <div class="proj-tossup" style="width:${data.projections.tossup}%"></div>
-            <div class="proj-d-lean" style="width:${data.projections.dLean}%"></div>
-            <div class="proj-d-likely" style="width:${data.projections.dLikely}%"></div>
+          <div style="margin-top:1.5rem;">
+            <h4 style="color:rgba(255,255,255,0.6); font-size:0.9rem; text-transform:uppercase; letter-spacing:0.1em;">Probabilités de victoire</h4>
+            <div class="projections-bar">
+              <div class="proj-r-safe" style="width:${data.projections.rSafe}%"></div>
+              <div class="proj-r-likely" style="width:${data.projections.rLikely}%"></div>
+              <div class="proj-r-lean" style="width:${data.projections.rLean}%"></div>
+              <div class="proj-tossup" style="width:${data.projections.tossup}%"></div>
+              <div class="proj-d-lean" style="width:${data.projections.dLean}%"></div>
+              <div class="proj-d-likely" style="width:${data.projections.dLikely}%"></div>
+            </div>
+            <div class="projections-legend">
+              <span>R+10+</span><span>R+5-9</span><span>R+1-4</span><span>Tossup</span><span>D+1-4</span><span>D+5+</span>
+            </div>
+            <div class="seats-projection">${data.seatsInfo}</div>
           </div>
-          <div class="projections-legend">
-            <span>R+10+</span><span>R+5-9</span><span>R+1-4</span><span>Tossup</span><span>D+1-4</span><span>D+5+</span>
-          </div>
-          <div class="seats-projection">${data.seatsInfo}</div>
           
           <!-- Graphique -->
-          <div class="chart-container">
-            <canvas id="detailChart" width="800" height="280"></canvas>
-            <div class="chart-tooltip" id="chartTooltip" style="opacity:0;"></div>
-          </div>
-          <div class="chart-legend">
-            <span><span class="legend-dot r"></span> ${data.candidates[0].name.split(' ').pop()} (R)</span>
-            <span><span class="legend-dot d"></span> ${data.candidates[1].name.split(' ').pop()} (D)</span>
-            <span style="opacity:0.6;">Moyenne mobile (3)</span>
+          <div style="margin-top:1.5rem;">
+            <h4 style="color:rgba(255,255,255,0.6); font-size:0.9rem; text-transform:uppercase; letter-spacing:0.1em;">📈 Évolution des sondages</h4>
+            <div class="chart-container">
+              <canvas id="detailChart" width="800" height="280"></canvas>
+              <div class="chart-tooltip" id="chartTooltip" style="opacity:0;"></div>
+            </div>
+            <div class="chart-legend">
+              <span><span class="legend-dot r"></span> ${data.candidates[0].name.split(' ').pop()} (R)</span>
+              <span><span class="legend-dot d"></span> ${data.candidates[1].name.split(' ').pop()} (D)</span>
+              <span style="opacity:0.6;">— Moyenne mobile (3 sondages)</span>
+            </div>
           </div>
         </div>
         
-        <!-- Primaires -->
+        <!-- CARTE PRIMAIRES -->
         <div class="card">
-          <div class="card-header"><div class="card-title">Primaires</div></div>
-          <div class="primary-tabs">
-            <div class="prim-tab active" data-prim="rep">Primaire Républicaine</div>
-            <div class="prim-tab" data-prim="dem">Primaire Démocrate</div>
+          <div class="card-header">
+            <div class="card-title">Primaires</div>
+            <div class="primary-date">📅 ${data.primaryDate}</div>
           </div>
+          
+          <div class="primary-tabs">
+            <div class="prim-tab r-active active" data-prim="rep">Primaire Républicaine</div>
+            <div class="prim-tab d-active" data-prim="dem">Primaire Démocrate</div>
+          </div>
+          
+          <!-- Panel Républicain -->
           <div class="prim-panel active" id="panel-rep">
             <div class="primary-grid">
-              ${data.primaries.rep.map(c => `
-                <div class="candidate-card">
-                  <div class="cand-photo r">${c.initials}</div>
+              ${data.primaries.rep.candidates.map(c => `
+                <div class="candidate-card ${c.isWinner ? 'winner' : ''}">
+                  <div class="cand-photo ${c.class} ${c.isWinner ? 'winner-photo' : ''}">${c.initials}</div>
                   <div class="cand-name">${c.name}</div>
                   <div class="cand-desc">${c.desc}</div>
-                  <div class="cand-score r">${c.score}</div>
-                  <div style="color:${c.badge.includes('🏆')?'#4caf50':'#f44336'};font-size:0.7rem;font-weight:600;">${c.badge}</div>
+                  <div class="cand-score ${c.class}">${c.score}</div>
+                  <div class="cand-badge ${c.badge}">${c.badgeText}</div>
                 </div>
               `).join('')}
             </div>
-            <p style="color:rgba(255,255,255,0.5);font-size:0.8rem;text-align:center;">${data.primaryNote.rep}</p>
+            
+            ${data.primaries.rep.polls ? `
+            <table class="primary-table">
+              <thead>
+                <tr>
+                  <th>Institut</th>
+                  <th>Date</th>
+                  ${data.primaries.rep.candidates.map(c => `<th>${c.name.split(' ').pop()}</th>`).join('')}
+                </tr>
+              </thead>
+              <tbody>
+                ${data.primaries.rep.polls.map((p, i) => `
+                  <tr class="${i === 0 ? 'highlight-row' : ''}">
+                    <td>${p.institute}</td>
+                    <td>${p.date}</td>
+                    ${p.values.map(v => `<td class="${data.primaries.rep.candidates[0].class === 'r' ? 'r-col' : 'd-col'}">${v}</td>`).join('')}
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+            ` : ''}
+            
+            <div class="primary-note">${data.primaries.rep.note}</div>
           </div>
+          
+          <!-- Panel Démocrate -->
           <div class="prim-panel" id="panel-dem">
             <div class="primary-grid">
-              ${data.primaries.dem.map(c => `
-                <div class="candidate-card">
-                  <div class="cand-photo d">${c.initials}</div>
+              ${data.primaries.dem.candidates.map(c => `
+                <div class="candidate-card ${c.isWinner ? 'winner' : ''}">
+                  <div class="cand-photo ${c.class} ${c.isWinner ? 'winner-photo' : ''}">${c.initials}</div>
                   <div class="cand-name">${c.name}</div>
                   <div class="cand-desc">${c.desc}</div>
-                  <div class="cand-score d">${c.score}</div>
-                  <div style="color:${c.badge.includes('🏆')?'#4caf50':'#f44336'};font-size:0.7rem;font-weight:600;">${c.badge}</div>
+                  <div class="cand-score ${c.class}">${c.score}</div>
+                  <div class="cand-badge ${c.badge}">${c.badgeText}</div>
                 </div>
               `).join('')}
             </div>
-            <p style="color:rgba(255,255,255,0.5);font-size:0.8rem;text-align:center;">${data.primaryNote.dem}</p>
+            
+            ${data.primaries.dem.polls ? `
+            <table class="primary-table">
+              <thead>
+                <tr>
+                  <th>Institut</th>
+                  <th>Date</th>
+                  ${data.primaries.dem.candidates.map(c => `<th>${c.name.split(' ').pop()}</th>`).join('')}
+                </tr>
+              </thead>
+              <tbody>
+                ${data.primaries.dem.polls.map((p, i) => `
+                  <tr class="${i === 0 ? 'highlight-row' : ''}">
+                    <td>${p.institute}</td>
+                    <td>${p.date}</td>
+                    ${p.values.map(v => `<td class="${data.primaries.dem.candidates[0].class === 'r' ? 'r-col' : 'd-col'}">${v}</td>`).join('')}
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+            ` : ''}
+            
+            <div class="primary-note">${data.primaries.dem.note}</div>
           </div>
         </div>
       `;
@@ -335,10 +470,15 @@
         container.querySelectorAll('.prim-tab').forEach(tab => {
           tab.addEventListener('click', function() {
             const target = this.dataset.prim;
-            container.querySelectorAll('.prim-tab').forEach(t => t.classList.remove('active'));
+            container.querySelectorAll('.prim-tab').forEach(t => {
+              t.classList.remove('active', 'r-active', 'd-active');
+            });
             this.classList.add('active');
+            if (target === 'rep') this.classList.add('r-active');
+            if (target === 'dem') this.classList.add('d-active');
+            
             container.querySelectorAll('.prim-panel').forEach(p => p.classList.remove('active'));
-            container.getElementById('panel-' + target).classList.add('active');
+            container.querySelector('#panel-' + target).classList.add('active');
           });
         });
         
@@ -347,18 +487,12 @@
       }, 100);
     }
 
-    function calcAvg(arr) {
-      const sum = arr.reduce((a,b) => a+b, 0);
-      return Math.round((sum/arr.length)*10)/10;
-    }
-
     function drawDetailChart(polls, candidates) {
       const canvas = document.getElementById('detailChart');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       const tooltip = document.getElementById('chartTooltip');
       
-      // Moyennes mobiles
       const repAvg = [], demAvg = [];
       for (let i = 0; i < polls.length; i++) {
         let sR=0, sD=0, c=0;
@@ -378,22 +512,18 @@
         const gX=i=>pad.left+(i/(polls.length-1))*cW;
         const gY=v=>pad.top+cH-((v-minY)/(maxY-minY))*cH;
         
-        // Grille
         ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=0.6;
         for(let i=minY;i<=maxY;i+=5){const y=gY(i);ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(pad.left+cW,y);ctx.stroke();ctx.fillStyle='rgba(255,255,255,0.4)';ctx.font='10px Segoe UI';ctx.textAlign='right';ctx.fillText(i+'%',pad.left-6,y);}
         
-        // Labels
         ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='10px Segoe UI'; ctx.textAlign='center';
         polls.forEach((p,i)=>ctx.fillText(p.date,gX(i),pad.top+cH+12));
         
-        // Courbes
         [{d:repAvg,c:'#ff8a7a'},{d:demAvg,c:'#8fc1ff'}].forEach(l=>{
           ctx.beginPath();ctx.moveTo(gX(0),gY(l.d[0]));
           for(let i=1;i<l.d.length;i++){const xc=gX(i),yc=gY(l.d[i]),xp=gX(i-1),yp=gY(l.d[i-1]);ctx.bezierCurveTo(xp+(xc-xp)*0.5,yp,xc-(xc-xp)*0.5,yc,xc,yc);}
           ctx.strokeStyle=l.c;ctx.lineWidth=2.5;ctx.stroke();
         });
         
-        // Points
         points=[];
         polls.forEach((p,i)=>{
           [{v:p.rep,t:'r',c:'rgba(180,40,40,0.5)'},{v:p.dem,t:'d',c:'rgba(30,80,180,0.5)'}].forEach(pt=>{
@@ -421,8 +551,7 @@
       canvas.onmouseleave = () => tooltip.style.opacity='0';
     }
 
-    // Afficher Texas par défaut
-    document.querySelector('#senate-races .race-item').classList.add('active');
+    // Afficher Texas par défaut (premier chargement)
     showRaceDetail('senate-tx');
   })();
 </script>
