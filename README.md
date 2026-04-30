@@ -129,6 +129,8 @@
     .source-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.7rem; text-decoration: none; transition: all 0.2s; }
     .source-link:hover { background: rgba(255,215,150,0.15); border-color: rgba(255,215,150,0.5); color: #ffe082; }
     
+    .no-data { text-align: center; color: rgba(255,255,255,0.4); padding: 2rem; font-style: italic; }
+    
     @media (max-width: 750px) { .card-title { font-size: 1.1rem; } }
   </style>
 </head>
@@ -155,13 +157,15 @@
   const racesData = {};
 
   const houseRaces = [
+    // AVEC SONDAGES
     {id:'house-wa3',state:'Washington',district:'3e District',rating:'Tossup',cls:'tossup',rep:'John Braun',repD:'Ancien chef de la minorité',dem:'Marie Gluesenkamp Perez',demD:'Représentante sortante',repPct:47,demPct:48,proj:{rSafe:8,rLikely:12,rLean:15,rTilt:5,tossup:30,dTilt:5,dLean:18,dLikely:7},note:'Trump +0.4% en 2024',primaryDate:'5 août 2025',polls:[{date:'2024-06',rep:46,dem:47,src:'SurveyUSA'},{date:'2024-09',rep:45,dem:48,src:'Emerson'},{date:'2024-11',rep:47,dem:46,src:'NYT/Siena'},{date:'2025-02',rep:46,dem:47,src:'SurveyUSA'},{date:'2025-06',rep:45,dem:49,src:'Emerson'},{date:'2025-09',rep:47,dem:46,src:'PPP'},{date:'2025-12',rep:46,dem:48,src:'YouGov'},{date:'2026-02',rep:47,dem:47,src:'SurveyUSA'},{date:'2026-04',rep:47,dem:48,src:'Emerson'}],sources:{rcp:'https://www.realclearpolling.com/maps/house/2026/washington-3',bp:'https://ballotpedia.org/Washington%27s_3rd_Congressional_District_election,_2026'}},
     {id:'house-az6',state:'Arizona',district:'6e District',rating:'Tossup',cls:'tossup',rep:'Juan Ciscomani',repD:'Représentant sortant',dem:'Kirsten Engel',demD:'Ancienne sénatrice d\'État',repPct:48,demPct:49,proj:{rSafe:5,rLikely:8,rLean:12,rTilt:5,tossup:30,dTilt:10,dLean:18,dLikely:12},note:'Biden +0.1% en 2020',primaryDate:'5 août 2026',polls:[{date:'2024-06',rep:48,dem:47,src:'OH Predictive'},{date:'2024-09',rep:47,dem:48,src:'Emerson'},{date:'2024-11',rep:49,dem:46,src:'NYT/Siena'},{date:'2025-03',rep:47,dem:49,src:'PPP'},{date:'2025-07',rep:48,dem:47,src:'YouGov'},{date:'2025-10',rep:47,dem:48,src:'Emerson'},{date:'2026-01',rep:48,dem:48,src:'OH Predictive'},{date:'2026-04',rep:48,dem:49,src:'Emerson'}],sources:{rcp:'https://www.realclearpolling.com/maps/house/2026/arizona-6',bp:'https://ballotpedia.org/Arizona%27s_6th_Congressional_District_election,_2026'}},
     {id:'house-mi7',state:'Michigan',district:'7e District',rating:'Tossup',cls:'tossup',rep:'Tom Barrett',repD:'Représentant sortant',dem:'Curtis Hertel',demD:'Ancien sénateur d\'État',repPct:47,demPct:49,proj:{rSafe:5,rLikely:8,rLean:12,rTilt:8,tossup:28,dTilt:8,dLean:18,dLikely:13},note:'Trump +2% en 2024',primaryDate:'5 août 2026',polls:[{date:'2024-08',rep:48,dem:46,src:'EPIC-MRA'},{date:'2024-11',rep:49,dem:47,src:'NYT/Siena'},{date:'2025-04',rep:47,dem:49,src:'PPP'},{date:'2025-08',rep:47,dem:48,src:'YouGov'},{date:'2026-01',rep:47,dem:49,src:'EPIC-MRA'},{date:'2026-04',rep:47,dem:49,src:'Emerson'}],sources:{rcp:'https://www.realclearpolling.com/maps/house/2026/michigan-7',bp:'https://ballotpedia.org/Michigan%27s_7th_Congressional_District_election,_2026'}},
     {id:'house-ia3',state:'Iowa',district:'3e District',rating:'Tossup',cls:'tossup',rep:'Zach Nunn',repD:'Représentant sortant',dem:'Lanon Baccam',demD:'Ancien candidat 2024',repPct:48,demPct:48,proj:{rSafe:5,rLikely:10,rLean:15,rTilt:8,tossup:28,dTilt:8,dLean:15,dLikely:11},note:'Trump +0.5% en 2024',primaryDate:'2 juin 2026',polls:[{date:'2024-09',rep:49,dem:47,src:'Selzer'},{date:'2024-11',rep:49,dem:48,src:'NYT/Siena'},{date:'2025-05',rep:48,dem:48,src:'PPP'},{date:'2025-09',rep:48,dem:47,src:'Selzer'},{date:'2026-02',rep:48,dem:48,src:'YouGov'},{date:'2026-04',rep:48,dem:48,src:'Emerson'}],sources:{}},
-    {id:'house-pa7',state:'Pennsylvanie',district:'7e District',rating:'Lean R',cls:'lean-r',rep:'Ryan Mackenzie',repD:'Représentant sortant',dem:'Susan Wild',demD:'Ancienne représentante',repPct:49,demPct:47,proj:{rSafe:10,rLikely:18,rLean:22,rTilt:8,tossup:22,dTilt:8,dLean:8,dLikely:4},note:'Trump +1% en 2024',primaryDate:'19 mai 2026',polls:[{date:'2024-09',rep:50,dem:46,src:'Muhlenberg'},{date:'2024-11',rep:49,dem:47,src:'NYT/Siena'},{date:'2025-04',rep:49,dem:47,src:'PPP'},{date:'2025-09',rep:49,dem:47,src:'YouGov'},{date:'2026-03',rep:49,dem:47,src:'Muhlenberg'}],sources:{}},
-    {id:'house-ny17',state:'New York',district:'17e District',rating:'Lean R',cls:'lean-r',rep:'Mike Lawler',repD:'Représentant sortant',dem:'Mondaire Jones',demD:'Ancien représentant',repPct:49,demPct:48,proj:{rSafe:8,rLikely:18,rLean:24,rTilt:8,tossup:22,dTilt:8,dLean:8,dLikely:4},note:'Biden +10% en 2020, Trump +0.5% en 2024',primaryDate:'24 juin 2026',polls:[{date:'2024-09',rep:50,dem:47,src:'Siena'},{date:'2024-11',rep:49,dem:48,src:'NYT/Siena'},{date:'2025-05',rep:49,dem:47,src:'PPP'},{date:'2025-10',rep:49,dem:48,src:'Siena'},{date:'2026-03',rep:49,dem:48,src:'Emerson'}],sources:{poly:'https://polymarket.com/event/new-york-17th-district-2026'}},
-    {id:'house-co8',state:'Colorado',district:'8e District',rating:'Tossup',cls:'tossup',rep:'Gabe Evans',repD:'Représentant sortant',dem:'Yadira Caraveo',demD:'Ancienne représentante',repPct:47,demPct:48,proj:{rSafe:8,rLikely:10,rLean:12,rTilt:5,tossup:28,dTilt:8,dLean:18,dLikely:11},note:'Biden +4% en 2020',primaryDate:'24 juin 2026',polls:[{date:'2024-08',rep:46,dem:49,src:'Emerson'},{date:'2024-11',rep:48,dem:47,src:'NYT/Siena'},{date:'2025-05',rep:47,dem:48,src:'PPP'},{date:'2025-10',rep:47,dem:49,src:'YouGov'},{date:'2026-03',rep:47,dem:48,src:'Emerson'}],sources:{}},
+    {id:'house-pa7',state:'Pennsylvanie',district:'7e District',rating:'Lean R',cls:'lean-r',rep:'Ryan Mackenzie',repD:'Représentant sortant',dem:'Susan Wild',demD:'Ancienne représentante',repPct:49,demPct:47,proj:{rSafe:10,rLikely:18,rLean:22,rTilt:8,tossup:22,dTilt:8,dLean:8,dLikely:4},note:'Trump +1% en 2024',primaryDate:'19 mai 2026',polls:[{date:'2024-09',rep:50,dem:46,src:'Muhlenberg'},{date:'2024-11',rep:49,dem:47,src:'NYT/Siena'},{date:'2025-04',rep:49,dem:47,src:'PPP'},{date:'2025-09',rep:49,dem:47,src:'YouGov'},{date:'2026-03',rep:49,dem:47,src:'Muhlenberg'}],sources:{bp:'https://ballotpedia.org/Pennsylvania%27s_7th_Congressional_District_election,_2026'}},
+    {id:'house-ny17',state:'New York',district:'17e District',rating:'Lean R',cls:'lean-r',rep:'Mike Lawler',repD:'Représentant sortant',dem:'Mondaire Jones',demD:'Ancien représentant',repPct:49,demPct:48,proj:{rSafe:8,rLikely:18,rLean:24,rTilt:8,tossup:22,dTilt:8,dLean:8,dLikely:4},note:'Biden +10% en 2020, Trump +0.5% en 2024',primaryDate:'24 juin 2026',polls:[{date:'2024-09',rep:50,dem:47,src:'Siena'},{date:'2024-11',rep:49,dem:48,src:'NYT/Siena'},{date:'2025-05',rep:49,dem:47,src:'PPP'},{date:'2025-10',rep:49,dem:48,src:'Siena'},{date:'2026-03',rep:49,dem:48,src:'Emerson'}],sources:{poly:'https://polymarket.com/event/new-york-17th-district-2026',bp:'https://ballotpedia.org/New_York%27s_17th_Congressional_District_election,_2026'}},
+    {id:'house-co8',state:'Colorado',district:'8e District',rating:'Tossup',cls:'tossup',rep:'Gabe Evans',repD:'Représentant sortant',dem:'Yadira Caraveo',demD:'Ancienne représentante',repPct:47,demPct:48,proj:{rSafe:8,rLikely:10,rLean:12,rTilt:5,tossup:28,dTilt:8,dLean:18,dLikely:11},note:'Biden +4% en 2020',primaryDate:'24 juin 2026',polls:[{date:'2024-08',rep:46,dem:49,src:'Emerson'},{date:'2024-11',rep:48,dem:47,src:'NYT/Siena'},{date:'2025-05',rep:47,dem:48,src:'PPP'},{date:'2025-10',rep:47,dem:49,src:'YouGov'},{date:'2026-03',rep:47,dem:48,src:'Emerson'}],sources:{rcp:'https://www.realclearpolling.com/maps/house/2026/colorado-8'}},
+    // SANS SONDAGES
     {id:'house-az1',state:'Arizona',district:'1er District',rating:'Lean R',cls:'lean-r',rep:'David Schweikert',repD:'Représentant sortant',dem:'Conor O\'Callaghan',demD:'Ancien banquier',repPct:49,demPct:47,proj:{rSafe:10,rLikely:20,rLean:25,rTilt:5,tossup:25,dTilt:5,dLean:8,dLikely:2},note:'Trump +1.5% en 2024',primaryDate:'5 août 2026',polls:[],sources:{}},
     {id:'house-tx34',state:'Texas',district:'34e District',rating:'Lean D',cls:'lean-d',rep:'Mayra Flores',repD:'Ancienne représentante',dem:'Vicente Gonzalez',demD:'Représentant sortant',repPct:47,demPct:50,proj:{rSafe:5,rLikely:8,rLean:10,rTilt:5,tossup:18,dTilt:8,dLean:25,dLikely:21},note:'District frontalier',primaryDate:'4 mars 2026',polls:[],sources:{}},
     {id:'house-ia1',state:'Iowa',district:'1er District',rating:'Lean R',cls:'lean-r',rep:'Mariannette Miller-Meeks',repD:'Représentante sortante',dem:'Christina Bohannan',demD:'Ancienne candidate',repPct:49,demPct:47,proj:{rSafe:12,rLikely:18,rLean:22,rTilt:8,tossup:22,dTilt:8,dLean:8,dLikely:2},note:'District compétitif',primaryDate:'2 juin 2026',polls:[],sources:{}},
@@ -186,10 +190,9 @@
     return {
       id: r.id, title: type === 'house' ? `House · ${r.state} ${r.district}` : `Sénat · ${r.state}`,
       rating: r.rating, ratingClass: r.cls,
-      stateName: r.state, districtName: r.district,
       candidates: [{ name:r.rep, party:'R', initials:init(r.rep), pct:r.repPct, desc:r.repD },{ name:r.dem, party:'D', initials:init(r.dem), pct:r.demPct, desc:r.demD }],
-      proj: r.proj, seats: r.note, moe:'±3.5%', sample:'1 200 LV',
-      polls: r.polls, sources: r.sources || {},
+      proj: r.proj, seats: r.note,
+      polls: r.polls || [], sources: r.sources || {},
       primaryDate: r.primaryDate,
       primaries: {
         rep: { cands: primCands.rep || [{ name:r.rep, init:init(r.rep), desc:'Candidat', score:'100%', cls:'rr', badge:'Investiture' }] },
@@ -217,8 +220,8 @@
     const arrowPos = ratingPos[d.rating] || 50;
     const total = Object.values(d.proj).reduce((a,b) => a+b, 0) || 100;
     const s = 100/total;
-    const hasSources = Object.keys(d.sources).length > 0;
     const hasPolls = d.polls && d.polls.length > 0;
+    const hasSources = hasPolls && Object.keys(d.sources).length > 0;
     
     container.innerHTML = `
       <div class="card">
@@ -251,7 +254,7 @@
               <tbody>${d.polls.map(p => `<tr><td>${p.date}</td><td style="color:rgba(255,255,255,0.5);">${p.src}</td><td class="r-val">${p.rep}%</td><td class="d-val">${p.dem}%</td></tr>`).join('')}</tbody>
             </table>
           </div>
-        </div>` : '<p style="color:rgba(255,255,255,0.4);text-align:center;padding:1rem;">Aucun sondage disponible pour cette course</p>'}
+        </div>` : '<p class="no-data">Aucun sondage disponible pour cette course</p>'}
         
         ${hasSources ? `
         <div class="sources-section">
